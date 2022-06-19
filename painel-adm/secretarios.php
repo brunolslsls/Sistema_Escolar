@@ -169,9 +169,11 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                 <div class="modal-footer">
                     <input value="<?php echo @$_GET['id'] ?>" type="hidden" name="txtid2" id="txtid2">
-                    <input value="<?php echo @$cpf ?>" type="hidden" name="antigo" id="antigo">
+                    <input value="<?php echo @$cpf2 ?>" type="hidden" name="antigo" id="antigo">
+                    <input value="<?php echo @$email2 ?>" type="hidden" name="antigo2" id="antigo2">
 
-                    <button type="button" id="btn-fechar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn-fechar" class="btn btn-secondary"
+                        data-dismiss="modal">Cancelar</button>
                     <button type="submit" name="btn-salvar" id="btn-salvar" class="btn btn-primary">Salvar</button>
                 </div>
 
@@ -240,22 +242,22 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
 <!--AJAX PARA INSERÇÃO E EDIÇÃO DOS DADOS COM IMAGEM -->
 <script type="text/javascript">
 $("#form").submit(function() {
-    
-    var pag = "<?=$pag?>";   // pega a pagina que eu estou
-    event.preventDefault();  // cancela todo os evento se caso aperta botão cancelar
-    
+
+    var pag = "<?=$pag?>"; // pega a pagina que eu estou
+    event.preventDefault(); // cancela todo os evento se caso aperta botão cancelar
+
     var formData = new FormData(this); // pega os dados do formulario
 
     $.ajax({
-        url: pag + "/inserir.php",    // URL que iremos enviar os dados
-        type: 'POST',                 // enviar no tipo post, que é mais seguro 
+        url: pag + "/inserir.php", // URL que iremos enviar os dados
+        type: 'POST', // enviar no tipo post, que é mais seguro 
         data: formData,
 
         success: function(mensagem) {
 
             $('#mensagem').removeClass()
 
-            if (mensagem.trim() == "Salvo com Sucesso!!") {
+            if (mensagem.trim() == "Salvo com Sucesso!") {
 
                 //$('#nome').val('');
                 //$('#cpf').val('');
@@ -305,7 +307,7 @@ $(document).ready(function() {
             dataType: "text",
             success: function(mensagem) {
 
-                if (mensagem.trim() === 'Excluído com Sucesso!!') {
+                if (mensagem.trim() === 'Excluído com Sucesso!') {
 
 
                     $('#btn-cancelar-excluir').click();
