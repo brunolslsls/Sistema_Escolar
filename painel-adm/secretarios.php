@@ -14,9 +14,11 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 ?>
 
 <div class="row mt-4 mb-4">
-    <a type="button" class="btn-primary btn-sm ml-3 d-none d-md-block" href="index.php?pag=<?php echo $pag ?>&funcao=novo">Nova Secretário</a>
-    <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-block" href="index.php?pag=<?php echo $pag ?>&funcao=novo"> + </a>
-    
+    <a type="button" class="btn-primary btn-sm ml-3 d-none d-md-block"
+        href="index.php?pag=<?php echo $pag ?>&funcao=novo">Nova Secretário</a>
+    <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-none"
+        href="index.php?pag=<?php echo $pag ?>&funcao=novo"> + </a>
+
 </div>
 
 
@@ -39,7 +41,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                 <tbody>
 
-                   <?php 
+                    <?php 
 
                    $query = $pdo->query("SELECT * FROM secretarios order by id desc ");
                    $res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -67,11 +69,13 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 
                         <td>
-                             <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>" class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a>
-                            <a href="index.php?pag=<?php echo $pag ?>&funcao=excluir&id=<?php echo $id ?>" class='text-danger mr-1' title='Excluir Registro'><i class='far fa-trash-alt'></i></a>
+                            <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>"
+                                class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a>
+                            <a href="index.php?pag=<?php echo $pag ?>&funcao=excluir&id=<?php echo $id ?>"
+                                class='text-danger mr-1' title='Excluir Registro'><i class='far fa-trash-alt'></i></a>
                         </td>
                     </tr>
-<?php } ?>
+                    <?php } ?>
 
 
 
@@ -88,7 +92,8 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalDados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,11 +102,14 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                     $titulo = "Editar Registro";
                     $id2 = $_GET['id'];
 
-                    $query = $pdo->query("SELECT * FROM carac where id = '" . $id2 . "' ");
+                    $query = $pdo->query("SELECT * FROM secretarios where id = '" . $id2 . "' ");
                     $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     $nome2 = $res[0]['nome'];
-                                                            
+                    $telefone2 = $res[0]['telefone'];
+                    $email2 = $res[0]['email'];
+                    $endereco2 = $res[0]['endereco'];
+                    $cpf2 = $res[0]['cpf'];                                                            
 
                 } else {
                     $titulo = "Inserir Registro";
@@ -110,7 +118,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 
                 ?>
-                
+
                 <h5 class="modal-title" id="exampleModalLabel"><?php echo $titulo ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -120,33 +128,53 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label >Nome</label>
-                        <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome-cat" name="nome-cat" placeholder="Nome">
+                        <label>Nome</label>
+                        <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome2" name="nome2"
+                            placeholder="Nome">
                     </div>
 
-                  
-                   
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input value="<?php echo @$cpf2 ?>" type="text" class="form-control" id="cpf2" name="cpf2"
+                            placeholder="cpf">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input value="<?php echo @$telefone2 ?>" type="text" class="form-control" id="telefone2"
+                            name="telefone2" placeholder="telefone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input value="<?php echo @$email2 ?>" type="text" class="form-control" id="email2" name="email2"
+                            placeholder="email">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input value="<?php echo @$endereco2 ?>" type="text" class="form-control" id="endereco2"
+                            name="endereco2" placeholder="endereco">
+                    </div>
+
 
                     <small>
                         <div id="mensagem">
 
                         </div>
-                    </small> 
+                    </small>
 
                 </div>
 
-
-
                 <div class="modal-footer">
-
-
-
-                <input value="<?php echo @$_GET['id'] ?>" type="hidden" name="txtid2" id="txtid2">
-                <input value="<?php echo @$nome2 ?>" type="hidden" name="antigo" id="antigo">
+                    <input value="<?php echo @$_GET['id'] ?>" type="hidden" name="txtid2" id="txtid2">
+                    <input value="<?php echo @$cpf ?>" type="hidden" name="antigo" id="antigo">
 
                     <button type="button" id="btn-fechar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" name="btn-salvar" id="btn-salvar" class="btn btn-primary">Salvar</button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -176,10 +204,11 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cancelar-excluir">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    id="btn-cancelar-excluir">Cancelar</button>
                 <form method="post">
 
-                    <input type="hidden" id="id"  name="id" value="<?php echo @$_GET['id'] ?>" required>
+                    <input type="hidden" id="id" name="id" value="<?php echo @$_GET['id'] ?>" required>
 
                     <button type="button" id="btn-deletar" name="btn-deletar" class="btn btn-danger">Excluir</button>
                 </form>
@@ -191,7 +220,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 
 
-
+<!-- define quando vamos chamar as modais-->
 <?php 
 
 if (@$_GET["funcao"] != null && @$_GET["funcao"] == "novo") {
@@ -208,55 +237,54 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
 
 ?>
 
-
-
-
 <!--AJAX PARA INSERÇÃO E EDIÇÃO DOS DADOS COM IMAGEM -->
 <script type="text/javascript">
-    $("#form").submit(function () {
-        var pag = "<?=$pag?>";
-        event.preventDefault();
-        var formData = new FormData(this);
+$("#form").submit(function() {
+    
+    var pag = "<?=$pag?>";   // pega a pagina que eu estou
+    event.preventDefault();  // cancela todo os evento se caso aperta botão cancelar
+    
+    var formData = new FormData(this); // pega os dados do formulario
 
-        $.ajax({
-            url: pag + "/inserir.php",
-            type: 'POST',
-            data: formData,
+    $.ajax({
+        url: pag + "/inserir.php",    // URL que iremos enviar os dados
+        type: 'POST',                 // enviar no tipo post, que é mais seguro 
+        data: formData,
 
-            success: function (mensagem) {
+        success: function(mensagem) {
 
-                $('#mensagem').removeClass()
+            $('#mensagem').removeClass()
 
-                if (mensagem.trim() == "Salvo com Sucesso!!") {
-                    
-                    //$('#nome').val('');
-                    //$('#cpf').val('');
-                    $('#btn-fechar').click();
-                    window.location = "index.php?pag="+pag;
+            if (mensagem.trim() == "Salvo com Sucesso!!") {
 
-                } else {
+                //$('#nome').val('');
+                //$('#cpf').val('');
+                $('#btn-fechar').click();
+                window.location = "index.php?pag=" + pag;
 
-                    $('#mensagem').addClass('text-danger')
-                }
+            } else {
 
-                $('#mensagem').text(mensagem)
-
-            },
-
-            cache: false,
-            contentType: false,
-            processData: false,
-            xhr: function () {  // Custom XMLHttpRequest
-                var myXhr = $.ajaxSettings.xhr();
-                if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-                    myXhr.upload.addEventListener('progress', function () {
-                        /* faz alguma coisa durante o progresso do upload */
-                    }, false);
-                }
-                return myXhr;
+                $('#mensagem').addClass('text-danger')
             }
-        });
+
+            $('#mensagem').text(mensagem)
+
+        },
+
+        cache: false,
+        contentType: false,
+        processData: false,
+        xhr: function() { // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                myXhr.upload.addEventListener('progress', function() {
+                    /* faz alguma coisa durante o progresso do upload */
+                }, false);
+            }
+            return myXhr;
+        }
     });
+});
 </script>
 
 
@@ -265,60 +293,58 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
 
 <!--AJAX PARA EXCLUSÃO DOS DADOS -->
 <script type="text/javascript">
-    $(document).ready(function () {
-        var pag = "<?=$pag?>";
-        $('#btn-deletar').click(function (event) {
-            event.preventDefault();
+$(document).ready(function() {
+    var pag = "<?=$pag?>";
+    $('#btn-deletar').click(function(event) {
+        event.preventDefault();
 
-            $.ajax({
-                url: pag + "/excluir.php",
-                method: "post",
-                data: $('form').serialize(),
-                dataType: "text",
-                success: function (mensagem) {
+        $.ajax({
+            url: pag + "/excluir.php",
+            method: "post",
+            data: $('form').serialize(),
+            dataType: "text",
+            success: function(mensagem) {
 
-                    if (mensagem.trim() === 'Excluído com Sucesso!!') {
-
-
-                        $('#btn-cancelar-excluir').click();
-                        window.location = "index.php?pag=" + pag;
-                    }
-
-                    $('#mensagem_excluir').text(mensagem)
+                if (mensagem.trim() === 'Excluído com Sucesso!!') {
 
 
+                    $('#btn-cancelar-excluir').click();
+                    window.location = "index.php?pag=" + pag;
+                }
 
-                },
+                $('#mensagem_excluir').text(mensagem)
 
-            })
+
+
+            },
+
         })
     })
+})
 </script>
 
 
 
 <!--SCRIPT PARA CARREGAR IMAGEM -->
 <script type="text/javascript">
+function carregarImg() {
 
-    function carregarImg() {
+    var target = document.getElementById('target');
+    var file = document.querySelector("input[type=file]").files[0];
+    var reader = new FileReader();
 
-        var target = document.getElementById('target');
-        var file = document.querySelector("input[type=file]").files[0];
-        var reader = new FileReader();
+    reader.onloadend = function() {
+        target.src = reader.result;
+    };
 
-        reader.onloadend = function () {
-            target.src = reader.result;
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
+    if (file) {
+        reader.readAsDataURL(file);
 
 
-        } else {
-            target.src = "";
-        }
+    } else {
+        target.src = "";
     }
-
+}
 </script>
 
 
@@ -326,13 +352,10 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#dataTable').dataTable({
-            "ordering": false
-        })
+$(document).ready(function() {
+    $('#dataTable').dataTable({
+        "ordering": false
+    })
 
-    });
+});
 </script>
-
-
-

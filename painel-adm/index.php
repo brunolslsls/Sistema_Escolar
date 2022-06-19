@@ -320,7 +320,7 @@ $menu6 = "menu6";
 
                         <button type="button" id="btn-fechar" class="btn btn-secondary"
                             data-dismiss="modal">Cancelar</button>
-                        <button type="submit" name="btn-salvar-perfil" id="btn-salvar-perfil"
+                        <button type="submit" name="btn-salva r-perfil" id="btn-salvar-perfil"
                             class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
@@ -350,6 +350,10 @@ $menu6 = "menu6";
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    
+    <script src="../js/mascaras.js"></script>
 
 </body>
 
