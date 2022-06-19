@@ -29,7 +29,9 @@ $menu6 = "menu6";
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -75,9 +77,10 @@ $menu6 = "menu6";
             </div>
 
 
-            
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-users"></i>
                     <span>Pessoas</span>
                 </a>
@@ -87,7 +90,7 @@ $menu6 = "menu6";
                         <h6 class="collapse-header">PESSOAS:</h6>
                         <a class="collapse-item" href="index.php?pag=<?php echo $menu1 ?>">Secretários</a>
                         <a class="collapse-item" href="index.php?pag=<?php echo $menu2 ?>">Menu 2</a>
-                        
+
                     </div>
                 </div>
 
@@ -95,11 +98,13 @@ $menu6 = "menu6";
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-home"></i>
                     <span>Opções XX</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dados XX:</h6>
                         <a class="collapse-item" href="index.php?pag=<?php echo $menu3 ?>">Menu 3</a>
@@ -165,13 +170,15 @@ $menu6 = "menu6";
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome do usuario</span>
                                 <img class="img-profile rounded-circle" src="../img/sem-foto.jpg">
 
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#ModalPerfil">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-primary"></i>
                                     Editar Perfil
@@ -193,7 +200,9 @@ $menu6 = "menu6";
                 <!-- acessa as paginas dos menus -->
                 <div class="container-fluid">
 
-                    <?php if (@$pag == $menu1) {
+                    <?php
+                    
+                    if (@$pag == $menu1) {
                         @include_once(@$menu1 . ".php");
                     } else if (@$pag == $menu2) {
                         @include_once(@$menu2 . ".php");
@@ -235,7 +244,8 @@ $menu6 = "menu6";
 
 
     <!--  Modal Perfil-->
-    <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -254,32 +264,38 @@ $menu6 = "menu6";
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Nome</label>
-                                    <input value="<?php echo $nome ?>" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                                    <input value="<?php echo $nome ?>" type="text" class="form-control" id="nome"
+                                        name="nome" placeholder="Nome">
                                 </div>
 
                                 <div class="form-group">
                                     <label>CPF</label>
-                                    <input value="<?php echo $cpf ?>" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                                    <input value="<?php echo $cpf ?>" type="text" class="form-control" id="cpf"
+                                        name="cpf" placeholder="CPF">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input value="<?php echo $email ?>" type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                    <input value="<?php echo $email ?>" type="email" class="form-control" id="email"
+                                        name="email" placeholder="Email">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Senha</label>
-                                    <input value="" type="password" class="form-control" id="text" name="senha" placeholder="Senha">
+                                    <input value="" type="password" class="form-control" id="text" name="senha"
+                                        placeholder="Senha">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="col-md-12 form-group">
                                     <label>Foto</label>
-                                    <input value="<?php echo $img ?>" type="file" class="form-control-file" id="imagem" name="imagem" onchange="carregarImg();">
+                                    <input value="<?php echo $img ?>" type="file" class="form-control-file" id="imagem"
+                                        name="imagem" onchange="carregarImg();">
 
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <img src="../img/profiles/<?php echo $img ?>" alt="Carregue sua Imagem" id="target" width="100%">
+                                    <img src="../img/profiles/<?php echo $img ?>" alt="Carregue sua Imagem" id="target"
+                                        width="100%">
                                 </div>
                             </div>
                         </div>
@@ -302,8 +318,10 @@ $menu6 = "menu6";
                         <input value="<?php echo $idUsuario ?>" type="hidden" name="txtid" id="txtid">
                         <input value="<?php echo $cpf ?>" type="hidden" name="antigo" id="antigo">
 
-                        <button type="button" id="btn-fechar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" name="btn-salvar-perfil" id="btn-salvar-perfil" class="btn btn-primary">Salvar</button>
+                        <button type="button" id="btn-fechar" class="btn btn-secondary"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="submit" name="btn-salvar-perfil" id="btn-salvar-perfil"
+                            class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
 

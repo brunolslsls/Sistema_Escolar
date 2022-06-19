@@ -1,6 +1,7 @@
 <?php 
 $pag = "secretarios";
 require_once("../conexao.php"); 
+
 /*
 @session_start();
     //verificar se o usuário está autenticado
@@ -14,7 +15,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 <div class="row mt-4 mb-4">
     <a type="button" class="btn-primary btn-sm ml-3 d-none d-md-block" href="index.php?pag=<?php echo $pag ?>&funcao=novo">Nova Secretário</a>
-    <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-none" href="index.php?pag=<?php echo $pag ?>&funcao=novo">+</a>
+    <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-block" href="index.php?pag=<?php echo $pag ?>&funcao=novo"> + </a>
     
 </div>
 
@@ -29,7 +30,9 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                 <thead>
                     <tr>
                         <th>Nome</th>
-                       
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>CPF</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -38,7 +41,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                    <?php 
 
-                   $query = $pdo->query("SELECT * FROM carac order by id desc ");
+                   $query = $pdo->query("SELECT * FROM secretarios order by id desc ");
                    $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                    for ($i=0; $i < count($res); $i++) { 
@@ -46,8 +49,10 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                       }
 
                       $nome = $res[$i]['nome'];
-                      
-                      
+                      $telefone = $res[$i]['telefone'];
+                      $email = $res[$i]['email'];
+                      $endereco = $res[$i]['endereco'];
+                      $cpf = $res[$i]['cpf'];
                       $id = $res[$i]['id'];
 
                        
@@ -56,7 +61,10 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                     <tr>
                         <td><?php echo $nome ?></td>
-                       
+                        <td><?php echo $telefone ?></td>
+                        <td><?php echo $email ?></td>
+                        <td><?php echo $cpf ?></td>
+
 
                         <td>
                              <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>" class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a>
