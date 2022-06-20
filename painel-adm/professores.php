@@ -1,5 +1,5 @@
 <?php 
-$pag = "secretarios";
+$pag = "professores";
 require_once("../conexao.php"); 
 
 /*
@@ -15,7 +15,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 <div class="row mt-4 mb-4">
     <a type="button" class="btn-primary btn-sm ml-3 d-none d-md-block"
-        href="index.php?pag=<?php echo $pag ?>&funcao=novo">Nova Secretário</a>
+        href="index.php?pag=<?php echo $pag ?>&funcao=novo">Nova Professor</a>
     <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-none"
         href="index.php?pag=<?php echo $pag ?>&funcao=novo"> + </a>
 
@@ -43,7 +43,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                     <?php 
 
-                   $query = $pdo->query("SELECT * FROM secretarios order by id desc ");
+                   $query = $pdo->query("SELECT * FROM professores order by id desc ");
                    $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                    for ($i=0; $i < count($res); $i++) { 
@@ -108,7 +108,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                     $titulo = "Editar Registro";
                     $id2 = $_GET['id'];
 
-                    $query = $pdo->query("SELECT * FROM secretarios where id = '" . $id2 . "' ");
+                    $query = $pdo->query("SELECT * FROM professores where id = '" . $id2 . "' ");
                     $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     $nome2 = $res[0]['nome'];
@@ -242,7 +242,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 					
 					$id2 = $_GET['id'];
 
-					$query = $pdo->query("SELECT * FROM secretarios where id = '$id2' ");
+					$query = $pdo->query("SELECT * FROM professores where id = '$id2' ");
 					$res = $query->fetchAll(PDO::FETCH_ASSOC);
 					
                     $nome3 = $res[0]['nome'];
