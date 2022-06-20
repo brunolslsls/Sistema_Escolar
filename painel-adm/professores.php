@@ -35,6 +35,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                         <th>Telefone</th>
                         <th>Email</th>
                         <th>CPF</th>
+                        <th>Foto</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -55,6 +56,8 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                       $email = $res[$i]['email'];
                       $endereco = $res[$i]['endereco'];
                       $cpf = $res[$i]['cpf'];
+                      $foto = $res[$i]['foto'];
+
                       $id = $res[$i]['id'];
 
                        
@@ -66,19 +69,20 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                         <td><?php echo $telefone ?></td>
                         <td><?php echo $email ?></td>
                         <td><?php echo $cpf ?></td>
+                        <td><img src="../img/professores/<?php echo $foto ?>" width="50"></td>
 
 
                         <td>
                             <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>"
                                 class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a>
-                            
+
                             <a href="index.php?pag=<?php echo $pag ?>&funcao=excluir&id=<?php echo $id ?>"
                                 class='text-danger mr-1' title='Excluir Registro'><i class='far fa-trash-alt'></i></a>
-                            
+
                             <a href="index.php?pag=<?php echo $pag ?>&funcao=endereco&id=<?php echo $id ?>"
                                 class='text-info mr-1' title='Ver endereco'><i class='fas fa-home'></i></a>
 
-                                
+
                         </td>
                     </tr>
                     <?php } ?>
@@ -100,7 +104,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 <!-- Modal -->
 <div class="modal fade" id="modalDados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg"> role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <?php 
@@ -116,6 +120,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                     $email2 = $res[0]['email'];
                     $endereco2 = $res[0]['endereco'];
                     $cpf2 = $res[0]['cpf'];                                                            
+                    $foto2 = $res[0]['foto'];                                                            
 
                 } else {
                     $titulo = "Inserir Registro";
@@ -132,37 +137,75 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
             </div>
             <form id="form" method="POST">
                 <div class="modal-body">
+                    <div class="row">
+                        <!--coluna esquerda principal-->
+                        <div class="col-md-6">
 
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome2" name="nome2"
-                            placeholder="Nome">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome2"
+                                    name="nome2" placeholder="Nome">
+                            </div>
+
+                            <div class="row">
+                                <!--coluna esquerda CPF e TELEFONE-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>CPF</label>
+                                        <input value="<?php echo @$cpf2 ?>" type="text" class="form-control" id="cpf2"
+                                            name="cpf2" placeholder="cpf">
+                                    </div>
+
+                                </div>
+                                <!--coluna direita CPF e TELEFONE-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Telefone</label>
+                                        <input value="<?php echo @$telefone2 ?>" type="text" class="form-control"
+                                            id="telefone2" name="telefone2" placeholder="telefone">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input value="<?php echo @$email2 ?>" type="text" class="form-control" id="email2"
+                                    name="email2" placeholder="email">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Endereço</label>
+                                <input value="<?php echo @$endereco2 ?>" type="text" class="form-control" id="endereco2"
+                                    name="endereco2" placeholder="endereco">
+                            </div>
+
+
+                        </div>
+
+                        <!--coluna Direita principal-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" value="<?php echo @$foto2 ?>" class="form-control-file" id="imagem"
+                                    name="imagem" onChange="carregarImg();">
+                            </div>
+
+                            <div id="divImgConta">
+                                <?php if(@$foto2 != ""){ ?>
+                                <img src="../img/professores/<?php echo $foto2 ?>" width="250" height="250" id="target">
+                                <?php  }else{ ?>
+                                <img src="../img/professores/sem-foto.jpg" width="250" height="250" id="target">
+                                <?php } ?>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        <label>CPF</label>
-                        <input value="<?php echo @$cpf2 ?>" type="text" class="form-control" id="cpf2" name="cpf2"
-                            placeholder="cpf">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Telefone</label>
-                        <input value="<?php echo @$telefone2 ?>" type="text" class="form-control" id="telefone2"
-                            name="telefone2" placeholder="telefone">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input value="<?php echo @$email2 ?>" type="text" class="form-control" id="email2" name="email2"
-                            placeholder="email">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Endereço</label>
-                        <input value="<?php echo @$endereco2 ?>" type="text" class="form-control" id="endereco2"
-                            name="endereco2" placeholder="endereco">
-                    </div>
 
 
                     <small>
@@ -227,17 +270,17 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 <!-- model para amostra de dados de cada secretario-->
 <div class="modal" id="modal-endereco" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Dados do Secretário</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dados do Secretário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-				<?php 
+                <?php 
 				if (@$_GET['funcao'] == 'endereco') {
 					
 					$id2 = $_GET['id'];
@@ -256,15 +299,16 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 				?>
 
-				<span><b>Nome: </b> <i><?php echo $nome3 ?></i><br>
-				<span><b>Telefone: </b> <i><?php echo $telefone3 ?></i> <span class="ml-4"><b>CPF: </b> <i><?php echo $cpf3 ?></i><br>
-				<span><b>Email: </b> <i><?php echo $email3 ?><br>
-				<span><b>Endereço: </b> <i><?php echo $endereco3 ?><br>
+                <span><b>Nome: </b> <i><?php echo $nome3 ?></i><br>
+                    <span><b>Telefone: </b> <i><?php echo $telefone3 ?></i> <span class="ml-4"><b>CPF: </b>
+                            <i><?php echo $cpf3 ?></i><br>
+                            <span><b>Email: </b> <i><?php echo $email3 ?><br>
+                                    <span><b>Endereço: </b> <i><?php echo $endereco3 ?><br>
 
-			</div>
-			
-		</div>
-	</div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
