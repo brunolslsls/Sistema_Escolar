@@ -1,4 +1,5 @@
 <?php
+@session_start();
 
 //variaveis para o menu
 $pag = @$_GET["pag"];

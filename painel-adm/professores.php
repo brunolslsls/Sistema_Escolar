@@ -2,14 +2,14 @@
 $pag = "professores";
 require_once("../conexao.php"); 
 
-/*
+
 @session_start();
     //verificar se o usuário está autenticado
 if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
-    echo "<script language='javascript'> window.location='../index.php' </script>";
+    echo "<script language='javascript'> window.location='../Login%20Modelo/index.php' </script>";
 
 }
-*/
+
 
 ?>
 
@@ -273,7 +273,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Dados do Secretário</h5>
+                <h5 class="modal-title">Dados do Professor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -293,7 +293,8 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 					$telefone3 = $res[0]['telefone'];
 					$email3 = $res[0]['email'];
 					$endereco3 = $res[0]['endereco'];
-					
+                    $foto3 = $res[0]['foto'];
+
 				} 
 
 
@@ -304,7 +305,10 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                             <i><?php echo $cpf3 ?></i><br>
                             <span><b>Email: </b> <i><?php echo $email3 ?><br>
                                     <span><b>Endereço: </b> <i><?php echo $endereco3 ?><br>
+                                            <div class="mt-4" align="center">
+                                                <img src="../img/professores/<?php echo $foto3 ?>" width="350px">
 
+                                            </div>
             </div>
 
         </div>
