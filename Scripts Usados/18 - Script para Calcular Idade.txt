@@ -1,0 +1,5 @@
+$date1 = $data_nasc3;
+$date2 = date('Y-m-d');
+$diff = abs(strtotime($date2) - strtotime($date1));
+$years = floor($diff / (365*60*60*24));
+echo $years;

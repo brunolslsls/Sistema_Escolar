@@ -1,0 +1,5 @@
+<select name="tipo_pessoa" class="form-control" id="pessoa">
+									<option <?php if($tipo_pessoa2 == 'Física'){ ?> selected <?php } ?> value="Física">Física</option>
+									<option <?php if($tipo_pessoa2 == 'Jurídica'){ ?> selected <?php } ?> value="Jurídica">Jurídica</option>
+									
+								</select>

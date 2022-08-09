@@ -1,0 +1,40 @@
+
+<div class="modal" id="modal-endereco" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Dados do Cliente</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<?php 
+				if (@$_GET['funcao'] == 'endereco') {
+					
+					$id2 = $_GET['id'];
+
+					$query = $pdo->query("SELECT * FROM clientes where id = '$id2' ");
+					$res = $query->fetchAll(PDO::FETCH_ASSOC);
+					$nome3 = $res[0]['nome'];
+					$cpf3 = $res[0]['cpf'];
+					$telefone3 = $res[0]['telefone'];
+					$email3 = $res[0]['email'];
+					$endereco3 = $res[0]['endereco'];
+					
+				} 
+
+
+				?>
+
+				<span><b>Nome: </b> <i><?php echo $nome3 ?></i><br>
+				<span><b>Telefone: </b> <i><?php echo $telefone3 ?></i> <span class="ml-4"><b>CPF: </b> <i><?php echo $cpf3 ?></i><br>
+				<span><b>Email: </b> <i><?php echo $email3 ?><br>
+				<span><b>Endereço: </b> <i><?php echo $endereco3 ?><br>
+
+			</div>
+			
+		</div>
+	</div>
+</div>

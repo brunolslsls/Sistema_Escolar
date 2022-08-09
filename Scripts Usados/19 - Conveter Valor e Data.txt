@@ -1,0 +1,2 @@
+$valor = number_format($valor, 2, ',', '.');
+$data_venc = implode('/', array_reverse(explode('-', $data_venc)));

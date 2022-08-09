@@ -1,0 +1,17 @@
+<select name="categoria" class="form-control" id="categoria">
+
+									<?php 
+
+									$query = $pdo->query("SELECT * FROM categorias order by nome asc ");
+									$res = $query->fetchAll(PDO::FETCH_ASSOC);
+
+									for ($i=0; $i < @count($res); $i++) { 
+										foreach ($res[$i] as $key => $value) {
+										}
+										$nome_reg = $res[$i]['nome'];
+										$id_reg = $res[$i]['id'];
+										?>									
+										<option <?php if(@$categoria2 == $id_reg){ ?> selected <?php } ?> value="<?php echo $id_reg ?>"><?php echo $nome_reg ?></option>
+									<?php } ?>
+									
+								</select>

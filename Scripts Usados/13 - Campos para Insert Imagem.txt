@@ -1,0 +1,12 @@
+<div class="form-group">
+								<label >Imagem</label>
+								<input type="file" value="<?php echo @$imagem2 ?>"  class="form-control-file" id="imagem" name="imagem" onChange="carregarImg();">
+							</div>
+
+							<div id="divImgConta">
+							<?php if(@$imagem2 != ""){ ?>
+								<img src="../img/contas/<?php echo $imagem2 ?>" width="170" height="170" id="target">
+							<?php  }else{ ?>
+								<img src="../img/contas/sem-foto.jpg" width="170" height="170" id="target">
+							<?php } ?>
+							</div>
