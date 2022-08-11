@@ -113,6 +113,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                 }
                 ?>
 
+                <!--Titulo da modal-->
                 <h5 class="modal-title" id="exampleModalLabel"><?php echo $titulo ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -160,11 +161,15 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                 <!-- RodaPé da-->
                 <div class="modal-footer">
-
+                    <!--Podemos criar input que não vai aparecer na modal so para pegar os dados dos valores de alguns campos-->
                     <!--value = Pegamos valor do id // type = input vai ser invisivel  // name e id é oo identifcador -->
                     <input value="<?php echo @$_GET['id'] ?>" type="hidden" name="txtid2" id="txtid2">
+
                     <!--value = Pegamos valor do Cpf // type = input vai ser invisivel  // name e id é oo identifcador -->
-                    <input value="<?php echo @$cpf ?>" type="hidden" name="antigo" id="antigo">
+                    <input value="<?php echo @$cpf2 ?>" type="hidden" name="antigo" id="antigo">
+
+                    <!--value = Pegamos valor do Cpf // type = input vai ser invisivel  // name e id é oo identifcador -->
+                    <input value="<?php echo @$email2 ?>" type="hidden" name="antigo2" id="antigo2">
 
                     <button type="button" id="btn-fechar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" name="btn-salvar" id="btn-salvar" class="btn btn-primary">Salvar</button>
@@ -234,25 +239,25 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
 <!--AJAX PARA INSERÇÃO E EDIÇÃO DOS DADOS COM IMAGEM -->
 <script type="text/javascript">
     $("#form").submit(function() {
-        var pag = "<?= $pag ?>";
+        var pag = "<?= $pag ?>"; // pegando tipo de pagina que estamos
         event.preventDefault();
-        var formData = new FormData(this);
+        var formData = new FormData(this); // FormData = cria um formulario , mas podemos jogar no parametro que adicione todos os campo de um formulario especifico passando id desse formulario
 
         $.ajax({
-            url: pag + "/inserir.php",
-            type: 'POST',
-            data: formData,
+            url: pag + "/inserir.php", // envia dados para esse arquivo
+            type: 'POST', // tipo de envio dos dados          
+            data: formData, // dados que vai ser enviado
 
-            success: function(mensagem) {
+            success: function(mensagem) { // mensagem que vai aparece apois receber um echo do arquivo que vai enviar
 
-                $('#mensagem').removeClass()
+                $('#mensagem').removeClass() // remove uma classe
 
-                if (mensagem.trim() == "Salvo com Sucesso!!") {
+                if (mensagem.trim() == "Salvo com Sucesso!") { // trim = limpa os espacos em branco desnecessarios
 
                     //$('#nome').val('');
                     //$('#cpf').val('');
                     $('#btn-fechar').click();
-                    window.location = "index.php?pag=" + pag;
+                    window.location = "index.php?pag=" + pag; // faz navegador abre essa pagina
 
                 } else {
 
@@ -297,11 +302,11 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "excluir") {
                 dataType: "text",
                 success: function(mensagem) {
 
-                    if (mensagem.trim() === 'Excluído com Sucesso!!') {
+                    if (mensagem.trim() === 'Excluído com Sucesso!') {
 
 
-                        $('#btn-cancelar-excluir').click();
-                        window.location = "index.php?pag=" + pag;
+                        $('#btn-cancelar-excluir').click();  // fechando a modal no botão Cancelar
+                        window.location = "index.php?pag=" + pag; // atualiza a pagina abrindo  nesse diretorio
                     }
 
                     $('#mensagem_excluir').text(mensagem)
